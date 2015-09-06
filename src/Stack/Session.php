@@ -32,7 +32,7 @@ class Session implements HttpKernelInterface
         if ($cookies->has($session->getName())) {
             $session->setId($cookies->get($session->getName()));
         } else {
-            $session->migrate(false);
+            $session->start();
         }
 
         $response = $this->app->handle($request, $type, $catch);
